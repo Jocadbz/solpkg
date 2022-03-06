@@ -36,6 +36,11 @@ solpkg [r or remove] <package> # -> same as "eopkg rm"
 solpkg [s or search] <package> # -> same as "eopkg sr"
 ```
 
+#### Version of solpkg and EOPKG
+```bash
+solpkg [info] # -> same as "eopkg --version"
+```
+
 ### How to install ?
 Just move the binary to ```bin```. And you are good to go.
 
