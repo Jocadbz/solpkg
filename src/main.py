@@ -1,19 +1,21 @@
 # import shit WHOAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 # import Break
+from asyncio import subprocess
 import os
 import sys
+import subprocess
 
 
 def INSTALL():
     pkgs = sys.argv[2:]
     res = str(pkgs)[1:-1]
     new = res.replace(',', '')
-    os.system(f'sudo eopkg it {new}')
+    subprocess.call(f"sudo eopkg install {new}", shell=True)
 
 
 def VERSION():
     print("Solpkg version: 1.4.0")
-    os.system("eopkg --version")
+    subprocess.call("eopkg --version", shell=True)
 
 
 def UPGRADE():
@@ -24,25 +26,29 @@ def REMOVE():
    pkgs = sys.argv[2:]
    res = str(pkgs)[1:-1]
    new = res.replace(',', '')
-   os.system(f"sudo eopkg rm {new}")
+   subprocess.call(f"sudo eopkg rm {new}", shell=True)
 
 
 def CLEAN():
-   os.system('sudo eopkg clean && sudo eopkg rmo')
+   subprocess.call('sudo eopkg clean && sudo eopkg rmo', shell=True)
 
 
 def SEARCH():
    pkgs = sys.argv[2:]
    res = str(pkgs)[1:-1]
    new = res.replace(',', '')
-   os.system(f'sudo eopkg sr {new}')
+   subprocess.call(f'sudo eopkg sr {new}', shell=True)
 
 
 def INFO():
    pkgs = sys.argv[2:]
    res = str(pkgs)[1:-1]
    new = res.replace(',', '')
-   os.system(f'sudo eopkg info {new}')
+   subprocess.call(f'sudo eopkg info {new}', shell=True)
+
+
+def PENDINGS():
+   subprocess.call(f"sudo eopkg cp", shell=True)
 
 
 def DO_WORK():
@@ -64,6 +70,7 @@ def DO_WORK():
             print(' search  -> Search for an package')
             print(' info    -> Display info of an package')
             print(' version -> Shows the version of Solpkg')
+            print(' cp      -> Configure pending packages  ')
          elif a == 'install' or a == 'i':
             INSTALL()
             break
@@ -85,6 +92,8 @@ def DO_WORK():
          elif a == 'version' or a == 'vs':
              VERSION()
              break
+         elif a == 'cp':
+            PENDINGS()
          else:
             print('Unrecognised argument.')
             print('Try running with --help flag to see current commands')
