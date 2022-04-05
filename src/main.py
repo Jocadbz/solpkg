@@ -14,7 +14,7 @@ def INSTALL():
 
 
 def VERSION():
-    print("Solpkg version: 1.4.0")
+    print("Solpkg version: 1.1.0")
     subprocess.call("eopkg --version", shell=True)
 
 
