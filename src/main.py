@@ -49,6 +49,31 @@ def PENDINGS():
    subprocess.call(f"sudo eopkg cp", shell=True)
 
 
+def LISTINSTALLED():
+   subprocess.call("sudo eopkg li", shell=True)
+
+
+# It is not working now. Gonna just leave this as a option.
+def LISTNEWEST():
+   subprocess.call("sudo eopkg list-newest", shell=True)
+
+
+def LISTPENDING():
+   subprocess.call("sudo eopkg list-pending", shell=True)
+
+
+def LISTREPO():
+   subprocess.call("sudo eopkg list-repo", shell=True)
+
+
+def LISTSOURCES():
+   subprocess.call("sudo eopkg list-sources", shell=True)
+
+
+def LISTUPGRADES():
+   subprocess.call("sudo eopkg list-upgrades", shell=True)
+
+
 def DO_WORK():
    """ Function to handle command line usage"""
    args = sys.argv
@@ -69,6 +94,11 @@ def DO_WORK():
             print(' info    -> Display info of an package')
             print(' version -> Shows the version of Solpkg')
             print(' cp      -> Configure pending packages  ')
+            print(" list-installed (li) - Prints the list with all installed packages")
+            print(" list-pending (lp) - List the pending packages")
+            print(" list-repo (lr) - List the repos")
+            print(" list-sources (ls) - List the available sources")
+            print(" list-upgrades (lu) - List all packages that need to be updated")
          elif a == 'install' or a == 'i':
             INSTALL()
             break
@@ -92,6 +122,22 @@ def DO_WORK():
              break
          elif a == 'cp':
             PENDINGS()
+            break
+         elif a == 'list-installed' or a == 'li':
+            LISTINSTALLED()
+            break
+         elif a == 'list-pending' or a == 'lp':
+            LISTPENDING()
+            break
+         elif a == 'list-repo' or a == 'lr':
+            LISTREPO()
+            break
+         elif a == 'list-sources' or a == 'ls':
+            LISTSOURCES()
+            break
+         elif a == 'list-upgrades' or a == 'lu':
+            LISTUPGRADES()
+            break
          else:
             print('Unrecognised argument.')
             print('Try running with --help flag to see current commands')
