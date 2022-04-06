@@ -1,5 +1,3 @@
-# import shit WHOAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-# import Break
 from asyncio import subprocess
 import os
 import sys
