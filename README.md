@@ -1,4 +1,7 @@
 # Solpkg
+
+[![Based License](https://custom-icon-badges.herokuapp.com/badge/BASED_LICENSE-696969?logo=gigachad&style=for-the-badge)](https://github.com/thatonecalculator/BASED-LICENSE)
+
 An wrapper for eopkg package manager
 
 ### What this does?
