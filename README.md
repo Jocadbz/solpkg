@@ -41,7 +41,7 @@ solpkg [s or search] <package> # -> same as "eopkg sr"
 
 #### Version of solpkg and EOPKG
 ```bash
-solpkg [info] # -> same as "eopkg --version"
+solpkg [version or vs] # -> same as "eopkg --version"
 ```
 
 ### How to install ?
