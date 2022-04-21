@@ -1,6 +1,5 @@
-from asyncio import subprocess
-import sys
 import subprocess
+import sys
 
 # Constants
 helpMessage = """
@@ -13,7 +12,7 @@ Options:
   search  -> Search for a package
   info    -> Display info of a package
   version -> Shows the version of Solpkg
-  cp      -> Configure pending packages  
+  cp      -> Configure pending packages
   list-installed (li) - Prints the list with all installed packages
   list-pending (lp) - List the pending packages
   list-repo (lr) - List the repos
@@ -93,7 +92,7 @@ def INFO():
 
 
 def PENDINGS():
-    subprocess.call(f"sudo eopkg cp", shell=True)
+    subprocess.call("sudo eopkg cp", shell=True)
 
 
 def LISTINSTALLED():
@@ -121,8 +120,10 @@ def LISTUPGRADES():
     subprocess.call("sudo eopkg list-upgrades", shell=True)
 
 
-abbreviationsDict = {"i": INSTALL, "u": UPGRADE, "r": REMOVE, "c": CLEAN, "s": SEARCH, "vs": VERSION,
-                     "cp": PENDINGS, "li": LISTINSTALLED, "lp": LISTPENDING, "lr": LISTREPO, "ls": LISTSOURCES, "lu": LISTUPGRADES}
+abbreviationsDict = {"i": INSTALL, "u": UPGRADE, "r": REMOVE, "c": CLEAN,
+                     "s": SEARCH, "vs": VERSION,
+                     "cp": PENDINGS, "li": LISTINSTALLED, "lp": LISTPENDING,
+                     "lr": LISTREPO, "ls": LISTSOURCES, "lu": LISTUPGRADES}
 
 
 def DO_WORK():
@@ -140,13 +141,12 @@ def DO_WORK():
             else:
                 try:
                     if (arguments in abbreviationsDict.keys()):
-                        # You get your function based on its key in abbreviationsDict
+                        # get your function based on key in abbreviationsDict
                         requiredFunction = abbreviationsDict[arguments]
                         requiredFunction()  # Execute this function.
                         break
-                    # Since the user input a command that can't be used as the name of a function...
+# Since the user input a command that can't be used as the name of a function..
                     elif (arguments.startswith("list-")):
-                        # python main.py (l)ist-(i)nstalled = l + i = li = ABBREVIATION
                         abbreviation = f"l{arguments[5]}"
                         # Same logic of the first If.
                         requiredFunction = abbreviationsDict[abbreviation]
@@ -156,10 +156,10 @@ def DO_WORK():
                         # install = INSTALL + () = INSTALL() and eval it.
                         eval(f"{arguments.upper()}()")
                         break
-                    # An error (NameError) will be throw in case you use a command which is not present.
+# (NameError) will be throw in case you use a command which is not present.
                 except NameError:
                     print('Unrecognized argument.')
-                    print('Try running with --help flag to see current commands')
+                    print("Try running with --help flag to see current commands")
                     break
 
 
