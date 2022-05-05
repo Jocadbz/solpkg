@@ -6,7 +6,7 @@ An wrapper for eopkg package manager
 
 ### What this does?
 
-It is basically an wrapper for eopkg package manager. it makes syntax more simple.
+It is basically a wrapper for eopkg package manager. it makes syntax more simple.
 
 ### Functions
 

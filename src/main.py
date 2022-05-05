@@ -91,39 +91,39 @@ def INFO():
     subprocess.call(f'sudo eopkg info {new}', shell=True)
 
 
-def PENDINGS():
+def pending():
     subprocess.call("sudo eopkg cp", shell=True)
 
 
-def LISTINSTALLED():
+def list_installed():
     subprocess.call("sudo eopkg li", shell=True)
 
 
-# It is not working now. Gonna just leave this as a option.
-def LISTNEWEST():
+# It is not working now. Gonna just leave this as an option.
+def list_newest():
     subprocess.call("sudo eopkg list-newest", shell=True)
 
 
-def LISTPENDING():
+def list_pending():
     subprocess.call("sudo eopkg list-pending", shell=True)
 
 
-def LISTREPO():
+def list_repo():
     subprocess.call("sudo eopkg list-repo", shell=True)
 
 
-def LISTSOURCES():
+def list_sources():
     subprocess.call("sudo eopkg list-sources", shell=True)
 
 
-def LISTUPGRADES():
+def list_upgrades():
     subprocess.call("sudo eopkg list-upgrades", shell=True)
 
 
 abbreviationsDict = {"i": INSTALL, "u": UPGRADE, "r": REMOVE, "c": CLEAN,
                      "s": SEARCH, "vs": VERSION,
-                     "cp": PENDINGS, "li": LISTINSTALLED, "lp": LISTPENDING,
-                     "lr": LISTREPO, "ls": LISTSOURCES, "lu": LISTUPGRADES}
+                     "cp": pending, "li": list_installed, "lp": list_pending,
+                     "lr": list_repo, "ls": list_sources, "lu": list_upgrades}
 
 
 def DO_WORK():
@@ -140,23 +140,23 @@ def DO_WORK():
                 break
             else:
                 try:
-                    if (arguments in abbreviationsDict.keys()):
+                    if arguments in abbreviationsDict.keys():
                         # get your function based on key in abbreviationsDict
-                        requiredFunction = abbreviationsDict[arguments]
-                        requiredFunction()  # Execute this function.
+                        required_function = abbreviationsDict[arguments]
+                        required_function()  # Execute this function.
                         break
-# Since the user input a command that can't be used as the name of a function..
-                    elif (arguments.startswith("list-")):
+# Since the user input a command that can't be used as the name of a function.
+                    elif arguments.startswith("list-"):
                         abbreviation = f"l{arguments[5]}"
                         # Same logic of the first If.
-                        requiredFunction = abbreviationsDict[abbreviation]
-                        requiredFunction()
+                        required_function = abbreviationsDict[abbreviation]
+                        required_function()
                         break
                     else:
                         # install = INSTALL + () = INSTALL() and eval it.
                         eval(f"{arguments.upper()}()")
                         break
-# (NameError) will be throw in case you use a command which is not present.
+# (NameError) will be thrown in case you use a command which is not present.
                 except NameError:
                     print('Unrecognized argument.')
                     print("Try running with --help flag to see current commands")
