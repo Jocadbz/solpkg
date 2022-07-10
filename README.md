@@ -1,3 +1,7 @@
+# MOVED TO GITLAB
+https://gitlab.com/Jocadbz/solpkg
+
+
 # Solpkg
 
 An wrapper for eopkg package manager
